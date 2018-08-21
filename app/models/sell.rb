@@ -1,7 +1,14 @@
 class Sell < ApplicationRecord
   include Fae::BaseModelConcern
+  
+  has_many :sell_products
+  has_many :products, through: :sell_products
+
+  has_many :sell_services
+  has_many :services, through: :sell_services
+
   enum status: { finished: 0, canceled: 1 }
-  validates :client, presence: true
+  validates :client, :products, :services, presence: true
   
   def fae_display_field
     id

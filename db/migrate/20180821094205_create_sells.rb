@@ -4,7 +4,7 @@ class CreateSells < ActiveRecord::Migration[5.2]
       t.decimal :total
       t.references :discount, foreign_key: true
       t.references :client, foreign_key: true
-      t.text :obsevations
+      t.text :observations
       t.integer :status
       t.date :date
 
