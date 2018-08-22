@@ -1,1 +1,1 @@
-bundle exec sidekiq -q emails
+bundle exec sidekiq -q emails -q schedule_emails

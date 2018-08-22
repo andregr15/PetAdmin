@@ -13,6 +13,8 @@ class ServiceSchedule < ApplicationRecord
   validates :date, :description, :client,
     :status, presence: true
 
+  after_save :schedule_emails
+
   def fae_display_field
     date
   end
@@ -21,4 +23,10 @@ class ServiceSchedule < ApplicationRecord
     order(:date)
   end
   
+  private
+
+  def schedule_emails
+    ServiceScheduleJob.perform_later self
+  end
+
 end
