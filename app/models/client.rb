@@ -3,6 +3,9 @@ class Client < ApplicationRecord
 
   has_many :campaign_clients
   has_many :campaings, through: :campaing_clients, dependent: :destroy
+  has_one :address, dependent: :destroy
+
+  accepts_nested_attributes_for :address, allow_destroy: true
 
   validates :phone, presence: true
   validates :email,

@@ -6,6 +6,7 @@ main.content
       tr
         th Name
         th Email
+        th Address
         th.-action-wide Modified
         th.-action data-sorter="false"
 
@@ -15,6 +16,7 @@ main.content
           tr id=fae_sort_id(item)
             td = link_to item.fae_display_field, edit_admin_client_path(item)
             td = item.email
+            td = - "#{item.address.street_address} - #{item.address.number} - #{item.address.neighborhood} - #{item.address.city}"
             td = fae_date_format item.updated_at
             td = fae_delete_button item
       - else
