@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  service_schedules: one
+  products: one
+
+two:
+  service_schedules: two
+  products: two

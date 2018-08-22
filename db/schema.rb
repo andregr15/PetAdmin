@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_22_180453) do
+ActiveRecord::Schema.define(version: 2018_08_22_184923) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -250,6 +250,34 @@ ActiveRecord::Schema.define(version: 2018_08_22_180453) do
     t.index ["discount_id"], name: "index_sells_on_discount_id"
   end
 
+  create_table "service_schedule_products", force: :cascade do |t|
+    t.bigint "service_schedule_id"
+    t.bigint "product_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["product_id"], name: "index_service_schedule_products_on_product_id"
+    t.index ["service_schedule_id"], name: "index_service_schedule_products_on_service_schedule_id"
+  end
+
+  create_table "service_schedule_services", force: :cascade do |t|
+    t.bigint "service_schedule_id"
+    t.bigint "service_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["service_id"], name: "index_service_schedule_services_on_service_id"
+    t.index ["service_schedule_id"], name: "index_service_schedule_services_on_service_schedule_id"
+  end
+
+  create_table "service_schedules", force: :cascade do |t|
+    t.bigint "client_id"
+    t.datetime "date"
+    t.string "description"
+    t.integer "status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["client_id"], name: "index_service_schedules_on_client_id"
+  end
+
   create_table "services", force: :cascade do |t|
     t.string "title"
     t.text "description"
@@ -278,4 +306,9 @@ ActiveRecord::Schema.define(version: 2018_08_22_180453) do
   add_foreign_key "sell_services", "services"
   add_foreign_key "sells", "clients"
   add_foreign_key "sells", "discounts"
+  add_foreign_key "service_schedule_products", "products"
+  add_foreign_key "service_schedule_products", "service_schedules"
+  add_foreign_key "service_schedule_services", "service_schedules"
+  add_foreign_key "service_schedule_services", "services"
+  add_foreign_key "service_schedules", "clients"
 end
