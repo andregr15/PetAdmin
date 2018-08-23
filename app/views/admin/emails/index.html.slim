@@ -25,3 +25,7 @@ main.content
             td = fae_date_format item.updated_at
       - else
         tr: td colspan="3" No items found
+
+  div style="text-align:right"
+    br
+    h3 = "Total opened emails: #{emails_opened}"

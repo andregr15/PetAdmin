@@ -15,6 +15,7 @@ class ServiceScheduleMailer < ApplicationMailer
     </p>'
 
     Email.create(client: @schedule.client, subject: @title, body: @body, opened: false, kind: 1)
+    @token = Email.last.token
     mail to: @schedule.client.email, subject: @title
   end
 end

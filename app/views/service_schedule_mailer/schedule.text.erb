@@ -1,1 +1,5 @@
-<%= @body %>
+Greetings <%= @schedule.client.name %>
+
+Your service<%= " #{@schedule.description} " %>was schedule to <%= @schedule.date %>!
+
+<img src='<%= "#{ActionMailer::Base.default_url_options[:host]}/email_confirmation/#{@token}/opened" %>' width="1" height="1">
