@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_22_184923) do
+ActiveRecord::Schema.define(version: 2018_08_23_174702) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -58,6 +58,19 @@ ActiveRecord::Schema.define(version: 2018_08_22_184923) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "kind"
+  end
+
+  create_table "emails", force: :cascade do |t|
+    t.bigint "client_id"
+    t.string "subject"
+    t.text "body"
+    t.boolean "opened"
+    t.string "token"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "kind"
+    t.index ["client_id"], name: "index_emails_on_client_id"
+    t.index ["token"], name: "index_emails_on_token", unique: true
   end
 
   create_table "fae_changes", id: :serial, force: :cascade do |t|
@@ -299,6 +312,7 @@ ActiveRecord::Schema.define(version: 2018_08_22_184923) do
   add_foreign_key "addresses", "clients"
   add_foreign_key "campaign_clients", "campaigns"
   add_foreign_key "campaign_clients", "clients"
+  add_foreign_key "emails", "clients"
   add_foreign_key "products", "suppliers"
   add_foreign_key "sell_products", "products"
   add_foreign_key "sell_products", "sells"

@@ -7,6 +7,7 @@ class MarketingMailer < ApplicationMailer
   #
   def campaign(client, title, body)
     @body = body
+    Email.create(client: client, subject: title, body: @body, opened: false, kind: 0)
     mail to: client.email, subject: title
   end
 end

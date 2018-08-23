@@ -36,7 +36,8 @@ module Fae
           item('Sells', path: admin_sells_path)
         ]),
         item('Marketing', subitems: [
-          item('Campaigns', path: admin_campaigns_path)
+          item('Campaigns', path: admin_campaigns_path),
+          item('Sended Emails', path: admin_emails_path),
         ]),
         item('+ Service Schedule', path: '/admin/service_schedules/new'),
         item('+ Sell', path: '/admin/sells/new'),

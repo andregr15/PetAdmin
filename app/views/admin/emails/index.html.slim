@@ -1,0 +1,27 @@
+== render 'fae/shared/index_header', title: @klass_humanized.pluralize.titleize, new_button: false
+
+main.content
+  table.js-sort-column
+    thead
+      tr
+        th Sended At
+        th Client
+        th Email
+        th Subject
+        th Kind
+        th Opened
+        th.-action-wide Modified
+
+    tbody
+      - if @items.present?
+        - @items.each do |item|
+          tr id=fae_sort_id(item)
+            td = link_to item.fae_display_field, edit_admin_email_path(item)
+            td = item.client.name
+            td = item.client.email
+            td = item.subject
+            td = item.kind
+            td = item.opened
+            td = fae_date_format item.updated_at
+      - else
+        tr: td colspan="3" No items found
