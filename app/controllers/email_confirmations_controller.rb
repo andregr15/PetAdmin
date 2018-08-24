@@ -5,7 +5,7 @@ class EmailConfirmationsController < ApplicationController
 
     
     send_data Base64.decode64("R0lGODlhAQABAPAAAAAAAAAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="),
-      filename: "gif.gif"
+      filename: "gif.gif",
       type: 'image/gif',
       disposition: 'inline',
       stream: 'true', 
