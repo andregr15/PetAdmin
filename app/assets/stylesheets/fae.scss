@@ -24,6 +24,6 @@
 
 $c-custom-highlight: #aaa;
 
-.campaign_body {
-  max-width: 100% !important;
+.campaign_body, .email_body {
+  max-width: 70% !important;
 }

@@ -35,7 +35,7 @@ gem 'jbuilder', '~> 2.5'
 
 gem 'redis'
 gem 'sidekiq'
-gem 'fae-rails'
+gem 'fae-rails', git: 'https://github.com/andregr15/fae.git'
 gem 'wysiwyg-rails'
 
 # Reduces boot times through caching; required in config/boot.rb

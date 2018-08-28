@@ -8,11 +8,11 @@ class ServiceScheduleMailer < ApplicationMailer
   def schedule(service_schedule)
     @schedule = service_schedule
     @title = "Your service was scheduled to #{@schedule.date} - Pet Admin"
-    @body = '<h1>Greetings <%= @schedule.client.name %></h1>
+    @body = "<h1>Greetings #{@schedule.client.name}</h1>
 
     <p>
-      Your service<%= " #{@schedule.description} " %>was schedule to <%= @schedule.date %>!
-    </p>'
+      Your service<%= #{@schedule.description} was schedule to #{@schedule.date}!
+    </p>"
 
     Email.create(client: @schedule.client, subject: @title, body: @body, opened: false, kind: 1)
     @token = Email.last.token

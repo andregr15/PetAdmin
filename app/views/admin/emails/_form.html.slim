@@ -1,5 +1,5 @@
 = simple_form_for(['admin', @item]) do |f|
-  == render 'fae/shared/form_header', header: @klass_name
+  == render 'fae/shared/form_header', header: @klass_name, save_button:false, cancel_button_text: 'Back'
 
   main.content
     = fae_input f, :subject

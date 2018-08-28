@@ -34,3 +34,9 @@ $(function() { $('#campaign_body').froalaEditor({
     heightMin: '200px',
     iconsTemplate: 'font_awesome_5'
 })});
+
+$(function() { $('#email_body').froalaEditor({
+    inlineMode: false,
+    heightMin: '200px',
+    iconsTemplate: 'font_awesome_5'
+})});
